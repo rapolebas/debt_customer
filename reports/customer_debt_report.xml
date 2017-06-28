@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            string="Customer debt"
+            id="action_report_customer_debt"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            name="debt_customer.customer_debt_report"
+            file="debt_customer.customer_debt_report"
+        />
+
+
+        <template id="customer_debt_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="debt_customer.debt_customer_docs"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="external_layout_report_statemnt">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <t t-call="debt_customer.header_debt_customer" />
+            <t t-raw="0" />
+            <t t-call="debt_customer.footer_debt_customer" />
+        </template>
+
+        <template id="header_debt_customer">
+            <div class="header">
+                <style type="text/css">
+                    .tg  {border-collapse:collapse;border-spacing:0;}
+                    .tg td{font-family:Arial, sans-serif;font-size:16px;padding:1px 1px;overflow:hidden;word-break:normal;}
+                    .tg th{font-family:Arial, sans-serif;font-size:16px;font-weight:normal;padding:1px 1px;overflow:hidden;word-break:normal;}
+                    .tg .tg-28bo{text-align:center;vertical-align:top;border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-top:0px}
+                    .tg .tg-28bo2{text-align:left;vertical-align:top;border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-top:0px}
+
+                </style>
+                <table class="tg" style="undefined;table-layout: fixed; width: 1020px">
+                    <colgroup>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+                        <col style="width: 80px"/>
+
+                    </colgroup>
+                <tr>
+                    <th class="tg-28bo2" colspan="9">
+
+                        <strong><span t-field="company.name"/></strong><br/>
+                        <!--<span t-field="company.partner_id.street"/>, <br/>-->
+                        <!--<span t-field="company.partner_id.city"/>,<span t-field="company.partner_id.state_id"/>, <span t-field="company.partner_id.zip"/><br/>-->
+                        <!--<span t-field="company.partner_id.country_id"/><br/>-->
+                        <!--Telefono: <span t-field="company.partner_id.phone"/> <br/>-->
+                        <!--Correo: <span t-field="company.partner_id.email"/> <br/>-->
+                        <!--RFC: <span t-field="company.partner_id.vat"/><br/> <br/>-->
+
+                    </th>
+                    <th class="tg-28bo" colspan="9">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo"
+                             style="max-height: 100px;"/>
+                    </th>
+                </tr>
+                </table>
+
+            </div>
+        </template>
+
+        <template id="debt_customer_docs">
+            <!--<t t-call="report.external_layout">-->
+            <t t-call="debt_customer.external_layout_report_statemnt">
+
+                <div class="page">
+
+                    <style type="text/css">
+                        .tg  {border-collapse:collapse;border-spacing:0;}
+                        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:2px 2px;overflow:hidden;word-break:normal;}
+                        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:2px 2px;overflow:hidden;word-break:normal;}
+                        .tg .tg-0ord{text-align:right}
+                        .tg .tg-0ordtop{text-align:right;border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-bottom:0px}
+                        .tg .tg-s6z2{text-align:center}
+                        .tg .tg-o24q{font-weight:bold;font-size:24px;text-align:center}
+                        .tg .tg-e3zv{font-weight:bold}
+                        .tg .tg-yw4l{vertical-align:top}
+                        .tg .tg-hgcj{font-weight:bold;text-align:center}
+                        .tg .tg-hgcjbot{font-weight:bold;text-align:center;border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-top:0px}
+                        .tg .tg-34fq{font-weight:bold;text-align:right}
+                        .tg .tg-34fqtop{font-weight:bold;text-align:right;border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-bottom:0px}
+                        .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                        .tg .tg-l2oz{font-weight:bold;text-align:right;vertical-align:top}
+                    </style>
+                    <table class="tg" style="undefined;table-layout: fixed; width: 979px">
+                        <colgroup>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                            <col style="width: 80px"/>
+                        </colgroup>
+                        <tr>
+                            <th class="tg-o24q" colspan="18">Programa de Cobros por Vencimiento de Clientes</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e" colspan="18"><br/></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-yw4l" colspan="2">
+
+                                <strong>Del cliente:</strong><br/>
+                                <strong>Del vendedor:</strong><br/>
+                                <strong>Del grupo:</strong> <br/>
+                                <strong>De la zona:</strong>  <br/>
+                                <strong>Fecha Inicio:</strong> <br/>
+                            </td>
+                            <td class="tg-yw4l" colspan="2">
+
+                                <span t-esc="dates.get('partner_name')"/><br/>
+                                <br/>
+                               <br/>
+                                <br/>
+                                <span t-esc="dates.get('start')"/><br/>
+                            </td>
+                            <td class="tg-yw4l" colspan="2">
+
+                                <strong>Del cliente:</strong><br/>
+                                <strong>Del vendedor:</strong><br/>
+                                <strong>Del grupo:</strong> <br/>
+                                <strong>De la zona:</strong>  <br/>
+                                <strong>Fecha Fin:</strong> <br/>
+                            </td>
+                            <td class="tg-yw4l" colspan="12">
+
+                                <span t-esc="dates.get('partner_name')"/><br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <span t-esc="dates.get('end')"/><br/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="tg-e3zv">Moneda:</td>
+                            <td class="tg-031e" colspan="17" style="color:red"><span t-esc="o.get('currency')"/></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e" colspan="18"><br/></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-hgcjbot">Clave</td>
+                            <td class="tg-hgcjbot" colspan="2">Nombre del cliente</td>
+                            <td class="tg-hgcjbot">Fecha</td>
+                            <td class="tg-hgcjbot">Descripcion</td>
+                            <td class="tg-hgcjbot" colspan="2">Folio</td>
+                            <td class="tg-hgcjbot" colspan="2">Folio digital</td>
+                            <td class="tg-hgcjbot">Fecha de vencimiento</td>
+                            <td class="tg-hgcjbot">Monto</td>
+                            <td class="tg-hgcjbot" >Monto Vencido</td>
+                            <td class="tg-hgcjbot">A 30 dias</td>
+                            <td class="tg-hgcjbot">A 60 dias</td>
+                            <td class="tg-hgcjbot">A 90 dias</td>
+                            <td class="tg-hgcjbot">A 120 dias</td>
+                            <td class="tg-hgcjbot">De 120 dias en adelante</td>
+                            <td class="tg-hgcjbot">Monto por aplic</td>
+                        </tr>
+                        <tr t-foreach="o['report_lines']" t-as="line">
+                            <td class="tg-s6z2" ><span t-esc="line.get('partner_ref')"/></td>
+                            <td class="tg-s6z2" colspan="2"><span t-esc="line.get('partner_name')"/></td>
+                            <td class="tg-s6z2"><span t-esc="line.get('date')"/></td>
+                            <td class="tg-s6z2"><span t-esc="line.get('journal_name')"/></td>
+                            <td class="tg-s6z2" colspan="2"><span t-esc="line.get('folio')"/></td>
+                            <td class="tg-s6z2" colspan="2"><span t-esc="line.get('folio_digital')"/></td>
+                            <td class="tg-s6z2"><span t-esc="line.get('date_due')"/></td>
+                            <td class="tg-0ord"><span t-esc="line.get('residual')"/></td>
+                            <td class="tg-0ord" style="color:red"><span t-esc="line.get('monto_vencido')"/></td>
+                            <td class="tg-0ord"><span t-esc="line.get('monto_30')"/></td>
+                            <td class="tg-0ord"><span t-esc="line.get('monto_60')"/></td>
+                            <td class="tg-0ord"><span t-esc="line.get('monto_90')"/></td>
+                            <td class="tg-0ord"><span t-esc="line.get('monto_120')"/></td>
+                            <td class="tg-0ord"><span t-esc="line.get('monto_150')"/></td>
+                            <td class="tg-0ord" style="color:red"><span t-esc="line.get('monto_aplic')"/></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e" colspan="18"><br/></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-34fqtop" colspan="9"></td>
+                            <td class="tg-34fqtop" >Saldo Total</td>
+                            <td class="tg-0ordtop" ><span t-esc="o.get('residual_total')"/></td>
+                            <td class="tg-0ordtop" style="color:red"><span t-esc="o.get('monto_vencido_total')"/></td>
+                            <td class="tg-0ordtop" ><span t-esc="o.get('monto_30_total')"/></td>
+                            <td class="tg-0ordtop" ><span t-esc="o.get('monto_60_total')"/></td>
+                            <td class="tg-0ordtop" ><span t-esc="o.get('monto_90_total')"/></td>
+                            <td class="tg-0ordtop" ><span t-esc="o.get('monto_120_total')"/></td>
+                            <td class="tg-0ordtop" ><span t-esc="o.get('monto_150_total')"/></td>
+                            <td class="tg-0ordtop" style="color:red"><span t-esc="o.get('monto_aplic_total')"/></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="footer_debt_customer">
+            <div class="footer">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <ul class="list-inline">
+                        <li>Page:</li>
+                        <li><span class="page"/></li>
+                        <li>/</li>
+                        <li><span class="topage"/></li>
+                    </ul>
+                </div>
+            </div>
+        </template>
+
+
+
+
+    </data>
+</openerp>

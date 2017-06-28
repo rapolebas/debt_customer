@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="customer_debt_report_wizard">
+            <field name="name">Generador de reportes</field>
+            <field name="model">debt_customer.customer_debt_report_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4" string="Filtros">
+                        <field name="date_start" required="True"/>
+                        <field name="date_end" required="True"/>
+                        <field name="partner_id"/>
+                    </group>
+                    <footer>
+                        <button string='Generar reporte' name="check_report" type="object" class="oe_highlight"/>
+                         or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_customer_debt_report_wizard" model="ir.actions.act_window">
+            <field name="name">Reporte de deudas de clientes</field>
+            <field name="res_model">debt_customer.customer_debt_report_wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+           <field name="view_id" ref="customer_debt_report_wizard"/>
+           <field name="target">new</field>
+        </record>
+
+
+
+    </data>
+</openerp>

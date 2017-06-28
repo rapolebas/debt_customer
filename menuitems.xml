@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="pdf_reports"
+        name="PDF Reports"
+        parent="account.menu_finance_reports"
+        sequence="100"
+    />
+    <menuitem
+        id="debt_customer"
+        name="Debt Customer"
+        action="action_customer_debt_report_wizard"
+        parent="pdf_reports"
+    />
+
+
+
+</odoo>
