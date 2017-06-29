@@ -7,7 +7,7 @@ import locale
 locale.setlocale(locale.LC_ALL, 'en_US')
 
 
-class PosOrderLineWizardReport(models.TransientModel):
+class DebtCustomerCustomerDebtReportWizard(models.TransientModel):
     """Model for wizard report"""
     _name = 'debt_customer.customer_debt_report_wizard'
     _description = 'Estado de cuenta de usuarios'
